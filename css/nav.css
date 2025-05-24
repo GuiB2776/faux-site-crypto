@@ -1,6 +1,8 @@
 /*---------------------------------------------------------------------------------------------------------*/
-/*----------------------------------------------/* NAVIGATION /*-------------------------------------------*/
+/*---------------------------------------------- NAVIGATION -----------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
+
+/* Burger toggle (desktop hidden) */
 .nav-toggle {
     background: none;
     border: none;
@@ -8,88 +10,136 @@
     font-size: 1.5rem;
     display: none;
     cursor: pointer;
+    z-index: 1001;
   }
   
-  .site-nav ul {
+  /* Base nav styling */
+  .site-nav ul,
+  .site-nav li {
     list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .site-nav > ul {
     display: flex;
     gap: var(--spacing);
+    align-items: center;
   }
-  
   .site-nav a {
+    display: block;
     color: var(--color-light);
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
-    transition: 
-      background 0.3s ease, 
-      color 0.3s ease, 
-      box-shadow 0.3s ease, 
-      transform 0.1s ease;
+    transition: background 0.3s, box-shadow 0.3s;
   }
-  
-  /* Effet “bouton” au survol et au focus clavier */
   .site-nav a:hover,
   .site-nav a:focus {
     background: var(--color-secondary);
-    color: var(--color-light);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    outline: none;
   }
   
-  /* Effet “pression” au clic */
-  .site-nav a:active {
-    transform: translateY(1px);
-    filter: brightness(0.9);
+  /* Dropdown base (desktop) */
+  .site-nav li.has-dropdown {
+    position: relative;
   }
-  
-  .btn-signup {
-    background: var(--color-secondary);
-    padding: 0.5rem 1rem;
+  .site-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-primary);
+    display: none;
+    min-width: 200px;
     border-radius: 0.25rem;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  .site-nav li.has-dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  
+  /* Nested dropdown (desktop) */
+  .site-nav .dropdown-menu li.has-dropdown {
+    position: relative;
+  }
+  .site-nav .dropdown-menu .dropdown-menu {
+    top: 0;
+    left: 100%;
+  }
+  .site-nav .dropdown-menu li.has-dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  
+  /* Desktop indicators */
+  .site-nav li.has-dropdown > a::after {
+    content: ' ▾';
+    font-size: 0.8em;
+    margin-left: 0.25rem;
+  }
+  .site-nav .dropdown-menu li.has-dropdown > a::after {
+    content: ' ▶';
+    float: right;
+    margin-left: 0.5rem;
+  }
+  
+  /* Mobile dropdown toggler (hidden on desktop) */
+  .dd-toggle {
+    background: none;
+    border: none;
     color: var(--color-light);
-    transition: 
-      background 0.3s ease,
-      transform 0.1s ease;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    display: none;
   }
   
-  /* Variante hover/focus pour le bouton Inscription */
-  .btn-signup:hover,
-  .btn-signup:focus {
-    background: var(--color-light);
-    color: var(--color-primary);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
-  
-  /* Pression sur le bouton Inscription */
-  .btn-signup:active {
-    transform: scale(0.98);
-  }
-  
-  /* RESPONSIVE */
+  /* RESPONSIVE: Mobile */
   @media (max-width: 768px) {
+    /* Show burger */
     .nav-toggle {
       display: block;
     }
+    /* Slide-down nav under fixed header */
     .site-nav {
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 0px; /* ajustez selon la hauteur de votre header */
       left: 0;
       right: 0;
       background: var(--color-primary);
       transform: translateY(-100%);
       transition: transform 0.3s ease;
+      z-index: 1000;
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
     }
     .site-nav.open {
       transform: translateY(0);
     }
-    .site-nav ul {
+    /* Stack items */
+    .site-nav > ul {
       flex-direction: column;
       gap: 0;
     }
+    .site-nav li {
+      width: 100%;
+    }
     .site-nav a {
-      display: block;
       padding: var(--spacing);
       border-top: 1px solid rgba(255,255,255,0.1);
     }
+    /* Show per-item toggler */
+    .dd-toggle {
+      display: inline-block;
+    }
+    /* Hide all dropdowns by default */
+    .site-nav .dropdown-menu {
+      position: static;
+      display: none;
+      background: var(--color-primary);
+    }
+    /* Show only when its parent <li> has .open */
+    .site-nav li.has-dropdown.open > .dropdown-menu {
+      display: block;
+    }
   }
+  

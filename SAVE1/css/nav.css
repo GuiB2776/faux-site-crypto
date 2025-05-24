@@ -1,0 +1,100 @@
+/*---------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------/* NAVIGATION /*-------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------*/
+.nav-toggle {
+    background: none;
+    border: none;
+    color: var(--color-light);
+    font-size: 1.5rem;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .site-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing);
+  }
+  
+  .site-nav a {
+    color: var(--color-light);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: 
+      background 0.3s ease, 
+      color 0.3s ease, 
+      box-shadow 0.3s ease, 
+      transform 0.1s ease;
+  }
+  
+  /* Effet “bouton” au survol et au focus clavier */
+  .site-nav a:hover,
+  .site-nav a:focus {
+    background: var(--color-secondary);
+    color: var(--color-light);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    outline: none;
+  }
+  
+  /* Effet “pression” au clic */
+  .site-nav a:active {
+    transform: translateY(1px);
+    filter: brightness(0.9);
+  }
+  
+  .btn-signup {
+    background: var(--color-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: var(--color-light);
+    transition: 
+      background 0.3s ease,
+      transform 0.1s ease;
+  }
+  
+  /* Variante hover/focus pour le bouton Inscription */
+  .btn-signup:hover,
+  .btn-signup:focus {
+    background: var(--color-light);
+    color: var(--color-primary);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  /* Pression sur le bouton Inscription */
+  .btn-signup:active {
+    transform: scale(0.98);
+  }
+  
+/*----------------------------------------------/* RESPONSIVE /*-------------------------------------------*/
+@media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+      z-index: 1000;
+    }
+    .site-nav {
+      position: fixed;       /* relatif à .site-header maintenant positionné */
+      top: 0;                /* juste sous le header */
+      left: 0;
+      right: 0;
+      background: var(--color-primary);
+      transform: translateY(-100%);  /* caché au-dessus du header */
+      transition: transform 0.3s ease;
+      z-index: 999;             /* sous le header, mais au-dessus du contenu */
+    }
+    .site-nav.open {
+      transform: translateY(0); /* fait “glisser” le menu vers le bas */
+      margin-top: 70px;
+
+    }
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    .site-nav a {
+      display: block;
+      padding: var(--spacing);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  }
+  
