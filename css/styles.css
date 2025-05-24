@@ -1,0 +1,51 @@
+/* Reset minimaliste */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables globales */
+:root {
+  --color-primary: #2c3e50;
+  --color-secondary: #e67e22;
+  --color-light: #ffffff;
+  --spacing: 1rem;
+  --max-width: 1200px;
+  --font-base: 'Roboto', sans-serif;
+}
+
+/* Typographie */
+body {
+  font-family: var(--font-base);
+  line-height: 1.6;
+  color: var(--color-primary);
+}
+
+/* Container centré */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* HEADER */
+.site-header {
+  background: var(--color-primary);
+  color: var(--color-light);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing) 0;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-light);
+  text-decoration: none;
+}
+

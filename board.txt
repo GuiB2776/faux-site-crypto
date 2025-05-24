@@ -1,0 +1,63 @@
+Choix technologiques
+HTML5 / CSS3 / JavaScript vanilla
+Pas de backend ni de base de données, tout statique.
+
+Framework CSS léger (optionnel)
+Vous pouvez intégrer Tailwind CSS ou Bulma pour accélérer le design, ou rester en CSS pur.
+
+Génération d’images IA
+Placeholders dans assets/images/ (ex. visuels “techno-futuristes”, mascottes cartoon, etc.).
+
+Contenu IA
+
+Titres accrocheurs et parodiques
+
+Faux articles de blog (“5 astuces pour miner avec votre grille-pain”)
+
+Fausse biographie de formateur, témoignages absurdes
+
+Déploiement
+Hébergement gratuit via GitHub Pages (branche main ou gh-pages).
+
+3. Structure commune à toutes les pages
+Chaque page inclura :
+
+Header
+
+Logo + nom du site
+
+Menu de navigation (<nav>) vers les 5 pages
+
+Footer
+
+Mentions légales fictives
+
+Liens vers réseaux sociaux (icônes générées IA)
+
+Feuille de style
+Import de assets/css/style.css
+
+Script
+Import de assets/js/main.js (pour ex. animation de menu, formulaire factice)
+
+4. Contenu par page
+index.html
+– Grand bandeau IA (“Bienvenue sur CryptoFolie !”)…
+– Bloc “Nos formations” (cartes IA)
+– CTA vers signup.html
+
+blog.html
+– Liste d’articles parodiques (titre, date, extrait)
+– Navigation pagination factice
+
+about.html
+– Présentation de l’équipe fictive
+– Témoignages IA absurdes
+
+contact.html
+– Formulaire HTML statique (nom, email, message)
+– Map factice (image IA)
+
+signup.html
+– Formulaire d’inscription parodique (username, email, mot de passe)
+– Bouton “Rejoindre la révolution”
