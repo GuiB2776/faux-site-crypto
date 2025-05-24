@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = [
       { label: 'Accueil', href: 'index.html' },
       { label: 'Blog',   href: 'blog.html'  },
+      { label: 'Formation',   href: 'formation.html'  },
       { label: 'À propos', href: 'about.html' },
-      { label: 'Contact',   href: 'contact.html' },
       { label: 'Inscription', href: 'signup.html', class: 'btn-signup' }
     ];
   
